@@ -1,5 +1,5 @@
 let interval = 1;
-const colorArray = ["#4c4cff", "#7f7fff", "#9999ff", "#b2b2ff", "#ccccff"]
+const colorArray = ["#DAA520", "#BC8F8F", "#ccccff", '#ff7f7f']
 
 const changeColors = () => {
   setInterval(colorPicker, 2000);
@@ -16,6 +16,8 @@ const colorPicker = () => {
   }
 
   document.body.style.backgroundColor = color;
+  document.body.style.webkitTransition = `${color} 2000ms linear`;
+  document.body.style.transition = `${color} 2000ms linear`
 }
 
 changeColors();

@@ -10,11 +10,7 @@ class App extends Component {
 
   handleInputText = (event) => {
     const textValue = event.target.value;
-    if (textValue.length > 1) {
-      this.setState({ name: textValue });
-    } else {
-      this.setState({ name: '' });
-    }
+    this.setState({ name: textValue })
   }
 
   getUser = () =>{
@@ -36,11 +32,11 @@ class App extends Component {
       })
   }
   render() {
-    const { user } = this.state;
+    const { user, name } = this.state;
     return (
       <div className="App">
-        <input type="text" id="inputField" placeholder="Enter a github username" onChange={this.handleInputText} />
-        <button onClick={this.getUser}>Get User</button>
+        <input className="inputField" type="text" id="inputField" value={name} placeholder="Enter a github username" onChange={this.handleInputText} />
+        <button className="user-button" onClick={this.getUser} disabled={!this.state.name}>Get User</button>
         <User user={user}/>
       </div>
     );
