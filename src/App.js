@@ -28,6 +28,7 @@ class App extends Component {
             following: data.following,
             public_repos: data.public_repos
           },
+          name: ''
         })
       })
   }
@@ -37,7 +38,7 @@ class App extends Component {
       <div className="App">
         <input className="inputField" type="text" id="inputField" value={name} placeholder="Enter a github username" onChange={this.handleInputText} />
         <button className="user-button" onClick={this.getUser} disabled={!this.state.name}>Get User</button>
-        <User user={user}/>
+        {user.name && <User user={user}/>}
       </div>
     );
   }
