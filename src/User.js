@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Img from 'react-image';
 
 class User extends Component {
   render() {
@@ -7,7 +6,6 @@ class User extends Component {
     return (
       <div>
           <h2>Details of User</h2>
-          <Img src={user.avatar_url} />
           <h4>Name: {user.name}</h4>
           <h4>Location: {user.location}</h4>
           <h4>Followers: {user.followers}</h4>
