@@ -4,10 +4,22 @@ import './App.css';
 
 class App extends Component {
   state = {
-    user: {}
+    user: {},
+    name: ''
   }
+
+  handleInputText = (event) => {
+    const textValue = event.target.value;
+    if (textValue.length > 1) {
+      this.setState({ name: textValue });
+    } else {
+      this.setState({ name: '' });
+    }
+  }
+
   getUser = () =>{
-    const name = this.refs.name.value;
+    const { name } = this.state;
+    document.getElementById('inputField').value = '';
     fetch(`http://api.github.com/users/${name}`)
       .then(response=> response.json())
       .then(data=> {
@@ -19,7 +31,7 @@ class App extends Component {
             followers: data.followers,
             following: data.following,
             public_repos: data.public_repos
-          }
+          },
         })
       })
   }
@@ -27,7 +39,7 @@ class App extends Component {
     const { user } = this.state;
     return (
       <div className="App">
-        <input type="text" placeholder="Enter a github username" ref="name" />
+        <input type="text" id="inputField" placeholder="Enter a github username" onChange={this.handleInputText} />
         <button onClick={this.getUser}>Get User</button>
         <User user={user}/>
       </div>
