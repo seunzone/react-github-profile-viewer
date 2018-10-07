@@ -6,7 +6,9 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-image": "^1.5.1",
-    "react-scripts": "2.0.3"
+    "react-modal": "^3.6.1",
+    "react-scripts": "2.0.3",
+    "toastr": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",

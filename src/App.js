@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import toastr from 'toastr';
 import User from './User';
 import './App.css';
 
@@ -19,7 +20,10 @@ class App extends Component {
     fetch(`http://api.github.com/users/${name}`)
       .then(response=> response.json())
       .then(data=> {
-        console.log(data);
+        if (data.message === 'Not Found') {
+          return toastr.error(`Could not find user with username: ${name}`)
+        }
+        toastr.success(`Found user ${name}`)
         this.setState({
           user: {
             name: data.name,
@@ -30,7 +34,7 @@ class App extends Component {
           },
           name: ''
         })
-      })
+      });
   }
   render() {
     const { user, name } = this.state;
